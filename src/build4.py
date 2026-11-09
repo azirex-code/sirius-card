@@ -110,7 +110,7 @@ html = f'''<!DOCTYPE html>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sirius Event Systems">
 <meta property="og:title" content="Технический партнёр мероприятий">
-<meta property="og:description" content="Синхронный перевод, звук, свет, экраны, сцены, Zoom">
+<meta property="og:description" content="Синхронный перевод, звук, свет, экран, сцена, Zoom">
 <meta property="og:url" content="https://azirex-code.github.io/sirius-card/">
 <meta property="og:image" content="https://azirex-code.github.io/sirius-card/og.png?v={OG_V}">
 <meta property="og:image:width" content="1200">
@@ -119,7 +119,7 @@ html = f'''<!DOCTYPE html>
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Технический партнёр мероприятий">
-<meta name="twitter:description" content="Синхронный перевод, звук, свет, экраны, сцены, Zoom">
+<meta name="twitter:description" content="Синхронный перевод, звук, свет, экран, сцена, Zoom">
 <meta name="twitter:image" content="https://azirex-code.github.io/sirius-card/og.png?v={OG_V}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
