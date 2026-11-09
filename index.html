@@ -67,24 +67,29 @@ a{color:inherit;text-decoration:none}
 }
 .eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
 .services{list-style:none;margin:6px 0 0;padding:0}
+.group{
+  margin:26px 0 2px;font-family:var(--font-display);font-weight:600;font-size:10.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--ink-muted)
+}
 .services li{
-  display:grid;grid-template-columns:28px 1fr;column-gap:16px;align-items:start;
-  padding:18px 0;border-bottom:1px solid rgba(243,239,230,.08)
+  display:grid;grid-template-columns:38px 1fr;column-gap:14px;align-items:start;
+  padding:14px 0;border-bottom:1px solid rgba(243,239,230,.08)
 }
 .services li:last-child{border-bottom:0}
-.services svg{width:26px;height:26px;margin-top:2px;color:var(--gold);flex:none}
-.services h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:17px;line-height:1.3;letter-spacing:-.005em}
-.services p{margin:4px 0 0;color:var(--ink-muted);font-size:14.5px;line-height:1.45}
+.services{margin-top:0}
+.services svg{width:38px;height:38px;padding:8px;border:1px solid var(--line);border-radius:50%;color:var(--gold);flex:none}
+.services h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:16.5px;line-height:1.3;letter-spacing:-.005em}
+.services p{margin:3px 0 0;color:var(--ink-muted);font-size:14px;line-height:1.45}
 .services .accent{font-family:var(--font-display);font-weight:600;color:var(--gold)}
 .services .brand-name{font-family:"Rajdhani",var(--font-display);font-weight:600;font-size:18px;letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
 .services .brand-name-cyr{font-family:"Play","Rajdhani",var(--font-display);font-weight:700;font-size:14.5px;letter-spacing:.04em}
 
 .facts{
   margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line);
-  display:flex;flex-wrap:wrap;justify-content:center;gap:6px 0;
+  display:flex;flex-direction:column;align-items:center;gap:4px;
   color:var(--ink-muted);font-size:13px;text-align:center
 }
-.facts span+span::before{content:"·";margin:0 10px;color:var(--gold)}
+.facts span:first-child{color:var(--gold);font-family:var(--font-display);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
 
 /* Карточка контакта: шторка снизу, строки копируются одним касанием */
 .backdrop{position:fixed;inset:0;z-index:8;background:rgba(4,18,15,.55);opacity:0;transition:opacity .25s ease}
@@ -177,6 +182,7 @@ a{color:inherit;text-decoration:none}
 
   <section class="section rise" aria-labelledby="services-title">
     <h2 id="services-title" class="eyebrow">Услуги</h2>
+    <p class="group">Перевод</p>
     <ul class="services">
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4.5" height="7" rx="1.8"/><rect x="16.5" y="13" width="4.5" height="7" rx="1.8"/></svg>
@@ -186,21 +192,23 @@ a{color:inherit;text-decoration:none}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h7A2.5 2.5 0 0 1 15 6.5v3a2.5 2.5 0 0 1-2.5 2.5H8l-3.5 3v-3A2.5 2.5 0 0 1 3 9.5z"/><path d="M15.5 9H18.5A2.5 2.5 0 0 1 21 11.5v3a2.5 2.5 0 0 1-2.5 2.5h-.5v3l-3.5-3h-3.5"/></svg>
         <div><h3>Переводчики-синхронисты</h3><p><span class="brand-name brand-name-cyr">Подбираем команду</span> с учётом рабочих языков и тематики вашего мероприятия.</p></div>
       </li>
+    </ul>
+    <p class="group">Звук и свет</p>
+    <ul class="services">
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L13 5v14l-5.5-4.5H4z"/><path d="M16.5 9a4.2 4.2 0 0 1 0 6"/><path d="M19 6.5a7.6 7.6 0 0 1 0 11"/></svg>
         <div><h3>Звуковое оборудование</h3><p><span class="brand-name">Yamaha</span> — системы звукоусиления для конференций и форумов.</p></div>
       </li>
       <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M8 20h8M12 16.5V20"/><path d="M7 8.5h4M7 11.5h6"/></svg>
-        <div><h3>LED-экраны</h3><p><span class="brand-name">Unilumin</span> — светодиодные экраны для показа презентаций и видео на конференциях и форумах.</p></div>
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19h18"/><path d="M5 19v-6h14v6"/><path d="M8 13V9h8v4"/><path d="M11 9V6h2v3"/></svg>
-        <div><h3>Сцены и подиумы</h3><p><span class="brand-name brand-name-cyr">Модульные конструкции</span> — под размеры зала и формат выступления.</p></div>
-      </li>
-      <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6l2 9H7z"/><path d="M12 12v4"/><path d="M8 20l4-4 4 4"/><path d="M5 15.5l1.5-1.5M19 15.5 17.5 14"/></svg>
         <div><h3>Световое оборудование</h3><p><span class="brand-name">Anzhee</span> — освещение сцены и зала для конференций и форумов.</p></div>
+      </li>
+    </ul>
+    <p class="group">Видео и экраны</p>
+    <ul class="services">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M8 20h8M12 16.5V20"/><path d="M7 8.5h4M7 11.5h6"/></svg>
+        <div><h3>LED-экраны</h3><p><span class="brand-name">Unilumin</span> — светодиодные экраны для показа презентаций и видео на конференциях и форумах.</p></div>
       </li>
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="11" rx="1.8"/><path d="M12 16v4M8.5 20h7"/><path d="M7 12.5l3-3 2.5 2.5L17 8"/></svg>
@@ -213,6 +221,13 @@ a{color:inherit;text-decoration:none}
       <li>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10l5-2.5v9L16 14"/></svg>
         <div><h3>Видеоконференцсвязь</h3><p><span class="brand-name">Zoom</span> — видеосвязь для гибридных конференций и форумов.</p></div>
+      </li>
+    </ul>
+    <p class="group">Сцена</p>
+    <ul class="services">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19h18"/><path d="M5 19v-6h14v6"/><path d="M8 13V9h8v4"/><path d="M11 9V6h2v3"/></svg>
+        <div><h3>Сцены и подиумы</h3><p><span class="brand-name brand-name-cyr">Модульные конструкции</span> — под размеры зала и формат выступления.</p></div>
       </li>
     </ul>
     <div class="facts"><span>Техническое обеспечение мероприятий</span><span>Ташкент и вся Республика Узбекистан</span></div>
