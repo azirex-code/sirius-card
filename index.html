@@ -77,6 +77,8 @@ a{color:inherit;text-decoration:none}
 .sheet .br{margin:0 0 12px;font:600 10.5px var(--fd);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
 .sheet p.tx{margin:0 0 16px;font:400 15px/1.45 var(--fb);color:rgba(243,239,230,.86)}
 body.open .dim{background:rgba(0,0,0,.5);pointer-events:auto}
+html,body{transition:background-color .28s}
+html.open,html.open body{background:#061713}
 body.open .sheet{transform:none}
 @media (prefers-reduced-motion:reduce){.dim,.sheet{transition:none}}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
@@ -126,11 +128,11 @@ body.open .sheet{transform:none}
   var D=[{"t": "Синхронный перевод", "b": "Bosch Integrus", "cyr": false, "d": "Bosch Integrus — цифровая система синхронного перевода."}, {"t": "Переводчики-синхронисты", "b": "UZ · RU · EN · TR · ZH", "cyr": false, "d": "Подбираем команду с учётом рабочих языков и тематики вашего мероприятия."}, {"t": "Звуковое оборудование", "b": "Yamaha", "cyr": false, "d": "Yamaha — системы звукоусиления для конференций и форумов."}, {"t": "Световое оборудование", "b": "Anzhee", "cyr": false, "d": "Anzhee — освещение сцены и зала для конференций и форумов."}, {"t": "Светодиодные экраны", "b": "Unilumin", "cyr": false, "d": "Unilumin — светодиодные экраны для показа презентаций и видео на конференциях и форумах."}, {"t": "Мониторы для спикеров", "b": "Экран спикера", "cyr": true, "d": "Экран перед спикером — слайды и подсказки во время выступления."}, {"t": "Интерактивные панели", "b": "Сенсорный экран", "cyr": true, "d": "Сенсорный экран — для презентаций и заметок прямо на слайдах."}, {"t": "Zoom-конференции", "b": "Видеоконференцсвязь", "cyr": false, "d": "Zoom — видеосвязь для гибридных конференций и форумов."}, {"t": "Сцены и подиумы", "b": "Модульные", "cyr": true, "d": "Модульные конструкции — под размеры зала и формат выступления."}];
   var cells=document.querySelectorAll('.g'),sheet=document.getElementById('sheet'),dim=document.getElementById('dim');
   var t=document.getElementById('sh-t'),b=document.getElementById('sh-b'),d=document.getElementById('sh-d'),ic=document.getElementById('sh-i');
-  var tm=null;
+  var tm=null;var themeMeta=document.querySelector('meta[name=theme-color]');function setTheme(c){if(themeMeta)themeMeta.setAttribute('content',c);}
   function open(i){var x=D[i];ic.innerHTML=cells[i].querySelector('svg').outerHTML;t.textContent=x.t;b.textContent=x.b;b.className='br'+(x.cyr?' cyr':'');d.textContent=x.d;
     clearTimeout(tm);dim.hidden=false;sheet.hidden=false;sheet.style.transform='';void sheet.offsetHeight;
-    sheet.setAttribute('aria-hidden','false');document.body.classList.add('open');}
-  function close(){document.body.classList.remove('open');sheet.setAttribute('aria-hidden','true');
+    sheet.setAttribute('aria-hidden','false');document.body.classList.add('open');document.documentElement.classList.add('open');setTheme('#061713');}
+  function close(){document.body.classList.remove('open');document.documentElement.classList.remove('open');setTheme('#0B2D26');sheet.setAttribute('aria-hidden','true');
     clearTimeout(tm);tm=setTimeout(function(){if(!document.body.classList.contains('open')){dim.hidden=true;sheet.hidden=true;}},360);}
   cells.forEach(function(c,i){c.addEventListener('click',function(){open(i)})});
   dim.addEventListener('click',close);
