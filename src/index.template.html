@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B2D26">
+<meta name="description" content="Sirius Event Systems — техническое обеспечение мероприятий: звук и синхронный перевод. Ташкент и вся Республика Узбекистан.">
+<title>Sirius Event Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Montserrat:wght@500;600;700&family=Rajdhani:wght@600;700&family=Play:wght@700&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Один визуальный мир: матовый тёмно-зелёный пластик карты и золотая фольга знака */
+  --bg:#0B2D26;            /* фон, как утверждённая NFC-карта */
+  --ink:#F3EFE6;           /* тёплый белый текст */
+  --ink-muted:rgba(243,239,230,.62);
+  --gold:#CC9F52;          /* фирменный золотой */
+  --gold-hi:#E3C382;       /* блик фольги */
+  --line:rgba(204,159,82,.26);
+  --glass:rgba(243,239,230,.06);
+  --glass-line:rgba(243,239,230,.14);
+  --font-display:"Montserrat",-apple-system,"SF Pro Display","Segoe UI",sans-serif;
+  --font-body:"Golos Text",-apple-system,"SF Pro Text","Segoe UI",sans-serif;
+  /* Макет: одна колонка до 440px, список услуг строками с тонкими линиями, действия закреплены внизу */
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg)}
+body{
+  min-height:100%;
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  background:var(--bg);
+  -webkit-tap-highlight-color:transparent;
+}
+a{color:inherit;text-decoration:none}
+.card{
+  max-width:440px;margin:0 auto;
+  padding:calc(40px + env(safe-area-inset-top)) 22px calc(176px + env(safe-area-inset-bottom));
+}
+
+/* Шапка */
+.brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px}
+.mark{width:88px;height:auto;display:block}
+.wordmark{width:172px;height:auto;display:block;margin-top:10px}
+.sub{
+  font-family:var(--font-display);font-weight:600;font-size:11px;
+  letter-spacing:.44em;text-indent:.44em;color:var(--gold);margin-top:-4px
+}
+.kicker{
+  margin:30px 0 0;font-family:var(--font-display);font-weight:600;font-size:11px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--ink-muted)
+}
+.bar{width:100%;margin-top:30px;border-left:2px solid var(--gold);padding-left:16px;text-align:left}
+.headline{margin:0;font-family:var(--font-display);font-weight:500;font-size:22px;line-height:1.22;letter-spacing:-.01em;color:rgba(243,239,230,.92)}
+.headline-sub{margin:8px 0 0;font-size:15px;line-height:1.4;color:var(--ink-muted)}
+
+/* Услуги */
+.section{margin-top:44px}
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--font-display);font-weight:600;font-size:11px;letter-spacing:.3em;
+  color:var(--gold);text-transform:uppercase
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line)}
+.services{list-style:none;margin:6px 0 0;padding:0}
+.group{
+  margin:26px 0 2px;font-family:var(--font-display);font-weight:600;font-size:10.5px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--ink-muted)
+}
+.services li{
+  display:grid;grid-template-columns:38px 1fr;column-gap:14px;align-items:start;
+  padding:14px 0;border-bottom:1px solid rgba(243,239,230,.08)
+}
+.services li:last-child{border-bottom:0}
+.services{margin-top:0}
+.services svg{width:38px;height:38px;padding:8px;border:1px solid var(--line);border-radius:50%;color:var(--gold);flex:none}
+.services h3{margin:0;font-family:var(--font-display);font-weight:600;font-size:16.5px;line-height:1.3;letter-spacing:-.005em}
+.services p{margin:3px 0 0;color:var(--ink-muted);font-size:14px;line-height:1.45}
+.services .accent{font-family:var(--font-display);font-weight:600;color:var(--gold)}
+.services .brand-name{font-family:"Rajdhani",var(--font-display);font-weight:600;font-size:18px;letter-spacing:.05em;text-transform:uppercase;color:var(--gold)}
+.services .brand-name-cyr{font-family:"Play","Rajdhani",var(--font-display);font-weight:700;font-size:14.5px;letter-spacing:.04em}
+
+.facts{
+  margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line);
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  color:var(--ink-muted);font-size:13px;text-align:center
+}
+.facts span:first-child{color:var(--gold);font-family:var(--font-display);font-weight:600;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+
+/* Карточка контакта: шторка снизу, строки копируются одним касанием */
+.backdrop{position:fixed;inset:0;z-index:8;background:rgba(4,18,15,.55);opacity:0;transition:opacity .25s ease}
+.backdrop.open{opacity:1}
+.sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:9;max-width:480px;margin:0 auto;
+  padding:10px 22px calc(22px + env(safe-area-inset-bottom));
+  background:#0F3A31;border:1px solid var(--glass-line);border-bottom:0;border-radius:24px 24px 0 0;
+  box-shadow:0 -20px 60px rgba(0,0,0,.35);
+  transform:translateY(102%);transition:transform .3s cubic-bezier(.2,.7,.2,1)
+}
+.sheet.open{transform:none}
+.grip{width:40px;height:4px;border-radius:2px;background:rgba(243,239,230,.22);margin:0 auto 14px}
+.sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.sheet-head h2{margin:0;font-family:var(--font-display);font-weight:600;font-size:18px}
+.sheet-head p{margin:3px 0 0;color:var(--ink-muted);font-size:13px}
+.close{
+  width:36px;height:36px;border-radius:50%;border:1px solid var(--glass-line);background:var(--glass);
+  color:var(--ink);display:grid;place-items:center;cursor:pointer;flex:none
+}
+.close svg{width:18px;height:18px}
+.rows{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.row{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+  min-height:66px;padding:12px 16px;border:1px solid var(--glass-line);border-radius:16px;background:var(--glass);
+  color:var(--ink);font:inherit;cursor:pointer;text-align:left
+}
+.row small{display:block;color:var(--ink-muted);font-size:12px;letter-spacing:.02em}
+.row b{font-family:var(--font-display);font-weight:600;font-size:16px;font-variant-numeric:tabular-nums;letter-spacing:.01em}
+.row svg{width:20px;height:20px;color:var(--gold);flex:none}
+.row:active{transform:scale(.985)}
+.btn:focus-visible,.row:focus-visible,.close:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.sheet,.backdrop{transition:none}}
+
+/* Действия, закреплённые внизу */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:5;
+  padding:28px 22px calc(16px + env(safe-area-inset-bottom));
+  background:linear-gradient(to top, var(--bg) 62%, rgba(11,45,38,0) 100%)
+}
+.dock-inner{max-width:440px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  height:54px;border-radius:16px;border:1px solid var(--glass-line);background:var(--glass);
+  font-family:var(--font-display);font-weight:600;font-size:15px;letter-spacing:.01em;color:var(--ink);
+  transition:transform .12s ease,background .2s ease
+}
+.btn svg{width:20px;height:20px;flex:none}
+.btn:active{transform:scale(.98)}
+.btn-primary{
+  grid-column:1 / -1;height:56px;border:0;color:#14261F;font-size:16px;
+  background:linear-gradient(135deg, var(--gold-hi) 0%, var(--gold) 55%, #B98E45 100%);
+  box-shadow:0 10px 28px rgba(204,159,82,.22), inset 0 1px 0 rgba(255,255,255,.35)
+}
+.btn-primary svg{color:#14261F}
+
+/* Подсказка после копирования */
+.toast{
+  position:fixed;left:50%;top:calc(18px + env(safe-area-inset-top));transform:translate(-50%,-8px);
+  padding:10px 16px;border-radius:999px;background:var(--ink);color:#14261F;
+  font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:.01em;
+  opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:12
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Появление */
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.rise{animation:rise .7s cubic-bezier(.2,.7,.2,1) backwards}
+.rise:nth-child(2){animation-delay:.08s}.rise:nth-child(3){animation-delay:.14s}.rise:nth-child(4){animation-delay:.2s}
+.section.rise{animation-delay:.26s}
+@media (prefers-reduced-motion:reduce){.rise{animation:none}.btn,.phone{transition:none}}
+
+@media (min-width:720px){
+  .card{padding-top:72px}
+}
+</style>
+</head>
+<body>
+<main class="card">
+  <header class="brand">
+    <div class="rise">{{ICON}}</div>
+    <div class="rise">{{WORDMARK}}</div>
+    <div class="sub rise">EVENT SYSTEMS</div>
+    <div class="bar rise">
+      <h1 class="headline">Мы делаем ваши события<br>видимыми и слышимыми</h1>
+      <p class="headline-sub">и понятными на любом языке</p>
+    </div>
+  </header>
+
+
+  <section class="section rise" aria-labelledby="services-title">
+    <h2 id="services-title" class="eyebrow">Услуги</h2>
+    <p class="group">Перевод</p>
+    <ul class="services">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="13" width="4.5" height="7" rx="1.8"/><rect x="16.5" y="13" width="4.5" height="7" rx="1.8"/></svg>
+        <div><h3>Синхронный перевод</h3><p><span class="brand-name">Bosch Integrus</span> — цифровая система синхронного перевода.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h7A2.5 2.5 0 0 1 15 6.5v3a2.5 2.5 0 0 1-2.5 2.5H8l-3.5 3v-3A2.5 2.5 0 0 1 3 9.5z"/><path d="M15.5 9H18.5A2.5 2.5 0 0 1 21 11.5v3a2.5 2.5 0 0 1-2.5 2.5h-.5v3l-3.5-3h-3.5"/></svg>
+        <div><h3>Переводчики-синхронисты</h3><p><span class="brand-name brand-name-cyr">Подбираем команду</span> с учётом рабочих языков и тематики вашего мероприятия.</p></div>
+      </li>
+    </ul>
+    <p class="group">Звук и свет</p>
+    <ul class="services">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5h3.5L13 5v14l-5.5-4.5H4z"/><path d="M16.5 9a4.2 4.2 0 0 1 0 6"/><path d="M19 6.5a7.6 7.6 0 0 1 0 11"/></svg>
+        <div><h3>Звуковое оборудование</h3><p><span class="brand-name">Yamaha</span> — системы звукоусиления для конференций и форумов.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6l2 9H7z"/><path d="M12 12v4"/><path d="M8 20l4-4 4 4"/><path d="M5 15.5l1.5-1.5M19 15.5 17.5 14"/></svg>
+        <div><h3>Световое оборудование</h3><p><span class="brand-name">Anzhee</span> — освещение сцены и зала для конференций и форумов.</p></div>
+      </li>
+    </ul>
+    <p class="group">Видео и экраны</p>
+    <ul class="services">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M8 20h8M12 16.5V20"/><path d="M7 8.5h4M7 11.5h6"/></svg>
+        <div><h3>LED-экраны</h3><p><span class="brand-name">Unilumin</span> — светодиодные экраны для показа презентаций и видео на конференциях и форумах.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="11" rx="1.8"/><path d="M12 16v4M8.5 20h7"/><path d="M7 12.5l3-3 2.5 2.5L17 8"/></svg>
+        <div><h3>Телевизоры-суфлёры</h3><p><span class="brand-name brand-name-cyr">Экран перед спикером</span> — слайды и подсказки во время выступления.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/><path d="M13.5 8.5l2 2L10 16H8v-2z"/></svg>
+        <div><h3>Интерактивные панели</h3><p><span class="brand-name brand-name-cyr">Сенсорный экран</span> — для презентаций и заметок прямо на слайдах.</p></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2.5"/><path d="M16 10l5-2.5v9L16 14"/></svg>
+        <div><h3>Видеоконференцсвязь</h3><p><span class="brand-name">Zoom</span> — видеосвязь для гибридных конференций и форумов.</p></div>
+      </li>
+    </ul>
+    <p class="group">Сцена</p>
+    <ul class="services">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19h18"/><path d="M5 19v-6h14v6"/><path d="M8 13V9h8v4"/><path d="M11 9V6h2v3"/></svg>
+        <div><h3>Сцены и подиумы</h3><p><span class="brand-name brand-name-cyr">Модульные конструкции</span> — под размеры зала и формат выступления.</p></div>
+      </li>
+    </ul>
+    <div class="facts"><span>Техническое обеспечение мероприятий</span></div>
+  </section>
+</main>
+
+<nav class="dock" aria-label="Связаться">
+  <div class="dock-inner">
+    <button class="btn btn-primary" type="button" id="open-contact" aria-haspopup="dialog" aria-controls="contact-sheet">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 20c.5-3.6 3-5.6 6.5-5.6 1.2 0 2.3.2 3.2.7"/><path d="M18.5 14v6M15.5 17h6"/></svg>
+      Сохранить контакт
+    </button>
+    <a class="btn" href="https://t.me/{{TELEGRAM}}" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4.5 3.6 11.2c-.9.4-.9 1.1 0 1.4l4.4 1.4 1.7 5.2c.2.6.8.7 1.2.3l2.4-2.3 4.6 3.4c.7.4 1.3.1 1.5-.8L21 4.5z"/><path d="M8 14l9.5-7.5"/></svg>
+      Telegram
+    </a>
+    <a class="btn" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>
+      Instagram
+    </a>
+  </div>
+</nav>
+
+<!-- sheet:start -->
+<div class="backdrop" id="backdrop" hidden></div>
+<section class="sheet" id="contact-sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+  <div class="grip" aria-hidden="true"></div>
+  <header class="sheet-head">
+    <div>
+      <h2 id="sheet-title">Sirius Event Systems</h2>
+      <p>Нажмите на номер, чтобы скопировать</p>
+    </div>
+    <button class="close" type="button" id="close-contact" aria-label="Закрыть">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </header>
+  <ul class="rows">
+    <li><button type="button" class="row" data-copy="+998998110745"><span><b>+998 99 811 07 45</b></span>{{COPY_ICON}}</button></li>
+  </ul>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Номер скопирован</div>
+
+<script>
+(function(){
+  var sheet=document.getElementById('contact-sheet'),backdrop=document.getElementById('backdrop');
+  var openBtn=document.getElementById('open-contact'),closeBtn=document.getElementById('close-contact');
+  var toast=document.getElementById('toast'),timer=null;
+  function show(text){
+    toast.textContent=text;toast.classList.add('show');
+    clearTimeout(timer);timer=setTimeout(function(){toast.classList.remove('show')},1800);
+  }
+  function open(){
+    sheet.hidden=false;backdrop.hidden=false;
+    requestAnimationFrame(function(){sheet.classList.add('open');backdrop.classList.add('open')});
+    closeBtn.focus();
+  }
+  function close(){
+    sheet.classList.remove('open');backdrop.classList.remove('open');
+    setTimeout(function(){sheet.hidden=true;backdrop.hidden=true;openBtn.focus()},260);
+  }
+  openBtn.addEventListener('click',open);
+  closeBtn.addEventListener('click',close);
+  backdrop.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!sheet.hidden)close()});
+  function fallbackCopy(text){
+    var ta=document.createElement('textarea');ta.value=text;ta.setAttribute('readonly','');
+    ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);
+    ta.select();ta.setSelectionRange(0,text.length);
+    var ok=false;try{ok=document.execCommand('copy')}catch(e){ok=false}
+    document.body.removeChild(ta);return ok;
+  }
+  function copy(text){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){show('Номер скопирован')},function(){
+        show(fallbackCopy(text)?'Номер скопирован':'Номер: '+text);
+      });
+    }else{show(fallbackCopy(text)?'Номер скопирован':'Номер: '+text)}
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-copy]'),function(b){
+    b.addEventListener('click',function(){copy(b.getAttribute('data-copy'))});
+  });
+})();
+</script>
+<!-- sheet:end -->
+</body>
+</html>
