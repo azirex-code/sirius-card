@@ -1,7 +1,16 @@
 """Сборка визитки Sirius — композиция D: логотип, услуги открытой сеткой (крупные значки и названия), золотая кнопка."""
 import re, math, hashlib, os
 
-TELEGRAM = "faribabu"
+import sys
+PERSON = sys.argv[1] if len(sys.argv) > 1 else "farhod"   # farhod | aziz
+PEOPLE = {
+    "farhod": {"telegram": "faribabu", "vcf": "sirius.vcf"},
+}
+P = PEOPLE[PERSON]
+TELEGRAM = P["telegram"]
+SITE = "https://azirex-code.github.io/sirius-card/"
+PAGE_URL = SITE + PERSON + "/"
+A = "../"   # общие ресурсы (иконки, манифест, og.png) лежат в корне
 INSTAGRAM_URL = "https://www.instagram.com/"   # ник компании ещё не получен
 
 icon_src = open('icon.svg', encoding='utf-8').read()
@@ -48,7 +57,7 @@ save_ic = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-wid
 tg_ic = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4.5 3.6 11.2c-.9.4-.9 1.1 0 1.4l4.4 1.4 1.7 5.2c.2.6.8.7 1.2.3l2.4-2.3 4.6 3.4c.7.4 1.3.1 1.5-.8L21 4.5z"/><path d="M8 14l9.5-7.5"/></svg>'
 ig_ic = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>'
 
-VCARD_V = hashlib.sha1(open('sirius.vcf', 'rb').read()).hexdigest()[:8]
+VCARD_V = hashlib.sha1(open(P['vcf'], 'rb').read()).hexdigest()[:8]
 OG_V = hashlib.sha1(open('og.png', 'rb').read()).hexdigest()[:8]
 ICON_V = hashlib.sha1(open('apple-touch-icon.png', 'rb').read()).hexdigest()[:8]
 vcard_href = f'sirius.vcard?v={VCARD_V}'
@@ -102,16 +111,16 @@ html = f'''<!DOCTYPE html>
 <meta name="theme-color" content="#0B2D26">
 <meta name="description" content="Технический партнёр мероприятий: синхронный перевод, звук, свет, экраны, сцены, Zoom. Ташкент — Узбекистан.">
 <title>Sirius Event Systems</title>
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v={ICON_V}">
+<link rel="apple-touch-icon" sizes="180x180" href="{A}apple-touch-icon.png?v={ICON_V}">
 <meta name="apple-mobile-web-app-title" content="Sirius">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v={ICON_V}">
-<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v={ICON_V}">
-<link rel="manifest" href="site.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="{A}favicon-32.png?v={ICON_V}">
+<link rel="icon" type="image/png" sizes="64x64" href="{A}favicon-64.png?v={ICON_V}">
+<link rel="manifest" href="{A}site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sirius Event Systems">
 <meta property="og:title" content="Технический партнёр мероприятий">
 <meta property="og:description" content="Синхронный перевод, звук, свет, экран, сцена, Zoom">
-<meta property="og:url" content="https://azirex-code.github.io/sirius-card/">
+<meta property="og:url" content="{PAGE_URL}">
 <meta property="og:image" content="https://azirex-code.github.io/sirius-card/og.png?v={OG_V}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -214,6 +223,6 @@ body.open .sheet{{transform:none}}
 </body>
 </html>
 '''
-os.makedirs('hosted', exist_ok=True)
-open('hosted/index.html', 'w', encoding='utf-8').write(html)
-print('hosted/index.html bytes', len(html.encode()), 'vcard', vcard_href)
+os.makedirs(f'hosted/{PERSON}', exist_ok=True)
+open(f'hosted/{PERSON}/index.html', 'w', encoding='utf-8').write(html)
+print(f'hosted/{PERSON}/index.html bytes', len(html.encode()), 'vcard', vcard_href)

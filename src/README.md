@@ -1,14 +1,14 @@
 # Sirius Event Systems — NFC-визитка (исходники)
 
-Живая страница: https://azirex-code.github.io/sirius-card/
+Страницы: https://azirex-code.github.io/sirius-card/farhod/ (Фарход); корень `/sirius-card/` перенаправляет на неё. Для новой персоны: добавить запись в PEOPLE в build4.py, собрать `python3 build4.py <имя>`, положить `<имя>/index.html` и `<имя>/sirius.vcard`.
 
 ## Как собрать
 ```bash
 cd src
 python3 build.py        # собирает sirius.vcf (карточка контакта Фархода)
-python3 build4.py       # собирает hosted/index.html из icon.svg, wordmark.svg, index.template.html
-cp hosted/index.html ../index.html
-cp sirius.vcf ../sirius.vcard   # на Pages файл отдаётся как .vcard (text/vcard), иначе Safari предлагает скачать
+python3 build4.py farhod   # собирает hosted/farhod/index.html
+cp hosted/farhod/index.html ../farhod/index.html
+cp sirius.vcf ../farhod/sirius.vcard   # на Pages файл отдаётся как .vcard (text/vcard), иначе Safari предлагает скачать
 python3 make_icons.py   # иконки для домашнего экрана (apple-touch-icon.png, icon-192/512.png, favicon-*.png)
 python3 check_fit.py    # проверка: один экран без прокрутки на iPhone (390×761, 844, SE, Pro Max)
 ```
