@@ -21,21 +21,21 @@
 }
 *{box-sizing:border-box}
 html{height:100%;background:var(--bg)}
-body{margin:0;min-height:100%;min-height:100dvh;background:var(--bg);color:var(--ink);font-family:var(--fb);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;padding:calc(10px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom))}
+body{margin:0;min-height:100%;min-height:100dvh;background:var(--bg);color:var(--ink);font-family:var(--fb);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent;display:flex;flex-direction:column;padding:calc(8px + env(safe-area-inset-top)) 16px calc(12px + env(safe-area-inset-bottom))}
 a{color:inherit;text-decoration:none}
 .wrap{width:100%;max-width:440px;margin:0 auto;display:flex;flex-direction:column;flex:1}
-.hero{position:relative;height:206px;flex:none}
+.hero{position:relative;height:216px;flex:none}
 .hero .wave{position:absolute;left:-16px;right:-16px;top:0;width:calc(100% + 32px);height:220px}
-.hero .mark{position:absolute;left:50%;top:36px;width:84px;height:auto;transform:translateX(-50%)}
-.hero .word{position:absolute;left:50%;top:132px;width:150px;height:auto;transform:translateX(-50%)}
-.hero .sub{position:absolute;left:0;right:0;top:168px;text-align:center;font:600 9.5px var(--fd);letter-spacing:.42em;text-indent:.42em;color:var(--gold)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 4px;margin:auto 0;padding:0}
+.hero .mark{position:absolute;left:50%;top:30px;width:96px;height:auto;transform:translateX(-50%)}
+.hero .word{position:absolute;left:50%;top:136px;width:170px;height:auto;transform:translateX(-50%)}
+.hero .sub{position:absolute;left:0;right:0;top:178px;text-align:center;font:600 9.5px var(--fd);letter-spacing:.42em;text-indent:.42em;color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px 4px;margin:auto 0;padding:0}
 .g{display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;min-width:0}
 .g svg{width:38px;height:38px;color:var(--gold)}
 .g b{font:600 14px/1.2 var(--fd);min-height:34px;display:flex;align-items:center;letter-spacing:-.01em}
 .g small{font:600 11px "Rajdhani",var(--fd);letter-spacing:.06em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 .g small.cyr{font-family:"Play",var(--fd);font-size:10px;font-weight:700}
-.dock{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:10px}
+.dock{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:8px}
 .btn{display:flex;align-items:center;justify-content:center;gap:9px;height:46px;border-radius:14px;border:1px solid var(--glass-line);background:var(--glass);font:600 13.5px var(--fd);color:var(--ink);transition:transform .12s ease}
 .btn svg{width:18px;height:18px;color:var(--gold);flex:none}
 .btn:active{transform:scale(.98)}
@@ -43,8 +43,8 @@ a{color:inherit;text-decoration:none}
 .btn-primary{grid-column:1/-1;height:50px;border:0;background:linear-gradient(135deg,var(--gold-hi),var(--gold) 55%,#B98E45);color:#14261F;font-size:15px;box-shadow:0 10px 24px rgba(204,159,82,.25)}
 .btn-primary svg{color:#14261F}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
-@media (max-height:720px){.hero{height:188px}.hero .mark{top:28px;width:76px}.hero .word{top:116px;width:140px}.hero .sub{top:150px}.grid{gap:14px 4px}.g svg{width:32px;height:32px}.g b{font-size:13px;min-height:31px}.g small{font-size:10px}.g small.cyr{font-size:9px}.dock{padding-top:8px}}
-@media (min-height:800px){.hero{height:240px}.hero .mark{top:56px}.hero .word{top:152px}.hero .sub{top:188px}.grid{gap:24px 6px}.g svg{width:44px;height:44px}.g b{font-size:14.5px;min-height:36px}.g small{font-size:11.5px}.g small.cyr{font-size:10.5px}.dock{padding-top:14px}}
+@media (max-height:720px){.hero{height:196px}.hero .mark{top:24px;width:84px}.hero .word{top:118px;width:156px}.hero .sub{top:156px}.grid{gap:12px 4px}.g svg{width:32px;height:32px}.g b{font-size:13px;min-height:31px}.g small{font-size:10px}.g small.cyr{font-size:9px}.dock{padding-top:8px}}
+@media (min-height:800px){.hero{height:256px}.hero .mark{top:48px;width:104px}.hero .word{top:160px;width:184px}.hero .sub{top:204px}.grid{gap:24px 6px}.g svg{width:44px;height:44px}.g b{font-size:14.5px;min-height:36px}.g small{font-size:11.5px}.g small.cyr{font-size:10.5px}.dock{padding-top:14px}}
 </style>
 </head>
 <body>
