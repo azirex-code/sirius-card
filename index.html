@@ -83,7 +83,7 @@ a{color:inherit;text-decoration:none}
     <div class="tile"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19h18"/><path d="M5 19v-6h14v6"/><path d="M8 13V9h8v4"/><path d="M11 9V6h2v3"/></svg><h3>Сцены и подиумы</h3><p class="cyr">Модульные</p></div>
   </section>
   <nav class="dock" aria-label="Связаться">
-    <a class="btn btn-primary" id="save-contact" href="sirius.vcard?v=508966f2">
+    <a class="btn btn-primary" id="save-contact" href="sirius.vcard?v=4da592d9">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="3.5"/><path d="M3.5 20c.5-3.6 3-5.6 6.5-5.6 1.2 0 2.3.2 3.2.7"/><path d="M18.5 14v6M15.5 17h6"/></svg>
       Сохранить контакт
     </a>
@@ -106,7 +106,7 @@ a{color:inherit;text-decoration:none}
   var safariUA=/Safari\//.test(ua)&&/Version\//.test(ua);
   var inApp=!safariUA||!!(window.webkit&&window.webkit.messageHandlers)||/Telegram|FBAN|FBAV|Instagram|Line\/|VK/i.test(ua);
   if(!inApp)return;
-  var target=location.protocol.replace(':','')+'://'+location.host+location.pathname.replace(/[^\/]*$/,'')+'sirius.vcard?v=508966f2';
+  var target=location.protocol.replace(':','')+'://'+location.host+location.pathname.replace(/[^\/]*$/,'')+'sirius.vcard?v=4da592d9';
   a.addEventListener('click',function(e){
     e.preventDefault();
     var left=false,onHide=function(){left=true};
