@@ -100,7 +100,7 @@ html = f'''<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0B2D26">
-<meta name="description" content="Техническое обеспечение мероприятий: синхронный перевод, звук, свет, LED-экраны, сцены, видеосвязь. Ташкент и Республика Узбекистан.">
+<meta name="description" content="Технический партнёр мероприятий: синхронный перевод, звук, свет, экраны, сцены, Zoom. Ташкент — Узбекистан.">
 <title>Sirius Event Systems</title>
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v={ICON_V}">
 <meta name="apple-mobile-web-app-title" content="Sirius">
@@ -109,17 +109,17 @@ html = f'''<!DOCTYPE html>
 <link rel="manifest" href="site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sirius Event Systems">
-<meta property="og:title" content="Техническое обеспечение мероприятий">
-<meta property="og:description" content="Синхронный перевод, звук, свет, LED-экраны, сцены, видеосвязь. Ташкент и Республика Узбекистан.">
+<meta property="og:title" content="Технический партнёр мероприятий">
+<meta property="og:description" content="Синхронный перевод, звук, свет, экраны, сцены, Zoom">
 <meta property="og:url" content="https://azirex-code.github.io/sirius-card/">
 <meta property="og:image" content="https://azirex-code.github.io/sirius-card/og.png?v={OG_V}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Sirius Event Systems — техническое обеспечение мероприятий">
+<meta property="og:image:alt" content="Sirius Event Systems">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Техническое обеспечение мероприятий">
-<meta name="twitter:description" content="Синхронный перевод, звук, свет, LED-экраны, сцены, видеосвязь. Ташкент и Республика Узбекистан.">
+<meta name="twitter:title" content="Технический партнёр мероприятий">
+<meta name="twitter:description" content="Синхронный перевод, звук, свет, экраны, сцены, Zoom">
 <meta name="twitter:image" content="https://azirex-code.github.io/sirius-card/og.png?v={OG_V}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
