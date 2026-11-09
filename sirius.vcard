@@ -1,8 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
-N:;Фарход;;;
-FN:Фарход
+N:— синхронный перевод и звук;Farhod;;;
+FN:Farhod — синхронный перевод и звук
 ORG:Sirius Event Systems
+NOTE:Техническое сопровождение конференци
+ й и форумов. Синхронисты, звук, свет, LED-эк
+ раны, сцены и видеосвязь. Ташкент и весь 
+ збекистан.
 TEL;TYPE=CELL,VOICE:+998998110745
 item1.URL:https://t.me/faribabu
 item1.X-ABLabel:Telegram
