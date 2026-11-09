@@ -1,16 +1,12 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Sirius Event Systems;;;;
+N:;;;;
 FN:Sirius Event Systems
 ORG:Sirius Event Systems
-TITLE:Техническое обеспечение мероприятий
+X-ABShowAs:COMPANY
 TEL;TYPE=CELL,VOICE:+998998110745
 item1.URL:https://t.me/faribabu
 item1.X-ABLabel:Telegram
-ADR;TYPE=WORK:;;;Ташкент;;;Узбекистан
-NOTE:Синхронный перевод, переводчики-синхр
- онисты, звуковое оборудование. Монтаж на
- кануне, работаем без выходных.
 PHOTO;ENCODING=b;TYPE=PNG:iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAIAAAAP3aGbAAAAB
  mJLR0QA/wD/AP+gvaeTAAAfsklEQVR4nO3d92NT9f7H8XOSNGma7kV3SqEtdAAtS7YMFdkUxMs
  UgQpUREBAQBAc9CKiXK9bUa4TQUWUr6KIINNeUIrYAqW00NI9052d7w9w5cKt0JHkfT45r8cfI
