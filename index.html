@@ -91,8 +91,8 @@ body.open .sheet{transform:none}
     <a class="btn" href="https://www.instagram.com/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor" stroke="none"/></svg>Instagram</a>
   </nav>
 </main>
-<div class="dim" id="dim"></div>
-<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t" aria-hidden="true">
+<div class="dim" id="dim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t" aria-hidden="true" hidden>
   <div class="hd"></div>
   <div class="ic" id="sh-i"></div>
   <h2 id="sh-t"></h2>
@@ -105,9 +105,12 @@ body.open .sheet{transform:none}
   var D=[{"t": "Системы синхронного перевода", "b": "Bosch Integrus", "cyr": false, "d": "Bosch Integrus — цифровая система синхронного перевода."}, {"t": "Переводчики-синхронисты", "b": "UZ · RU · EN · TR · ZH", "cyr": false, "d": "Подбираем команду с учётом рабочих языков и тематики вашего мероприятия."}, {"t": "Звуковое оборудование", "b": "Yamaha", "cyr": false, "d": "Yamaha — системы звукоусиления для конференций и форумов."}, {"t": "Световое оборудование", "b": "Anzhee", "cyr": false, "d": "Anzhee — освещение сцены и зала для конференций и форумов."}, {"t": "Светодиодные экраны", "b": "Unilumin", "cyr": false, "d": "Unilumin — светодиодные экраны для показа презентаций и видео на конференциях и форумах."}, {"t": "Мониторы для спикеров", "b": "Экран спикера", "cyr": true, "d": "Экран перед спикером — слайды и подсказки во время выступления."}, {"t": "Интерактивные панели", "b": "Сенсорный экран", "cyr": true, "d": "Сенсорный экран — для презентаций и заметок прямо на слайдах."}, {"t": "Видеоконференцсвязь", "b": "Zoom", "cyr": false, "d": "Zoom — видеосвязь для гибридных конференций и форумов."}, {"t": "Сцены и подиумы", "b": "Модульные", "cyr": true, "d": "Модульные конструкции — под размеры зала и формат выступления."}];
   var cells=document.querySelectorAll('.g'),sheet=document.getElementById('sheet'),dim=document.getElementById('dim');
   var t=document.getElementById('sh-t'),b=document.getElementById('sh-b'),d=document.getElementById('sh-d'),ic=document.getElementById('sh-i');
+  var tm=null;
   function open(i){var x=D[i];ic.innerHTML=cells[i].querySelector('svg').outerHTML;t.textContent=x.t;b.textContent=x.b;b.className='br'+(x.cyr?' cyr':'');d.textContent=x.d;
-    sheet.style.transform='';sheet.setAttribute('aria-hidden','false');document.body.classList.add('open');}
-  function close(){document.body.classList.remove('open');sheet.setAttribute('aria-hidden','true');}
+    clearTimeout(tm);dim.hidden=false;sheet.hidden=false;sheet.style.transform='';void sheet.offsetHeight;
+    sheet.setAttribute('aria-hidden','false');document.body.classList.add('open');}
+  function close(){document.body.classList.remove('open');sheet.setAttribute('aria-hidden','true');
+    clearTimeout(tm);tm=setTimeout(function(){if(!document.body.classList.contains('open')){dim.hidden=true;sheet.hidden=true;}},360);}
   cells.forEach(function(c,i){c.addEventListener('click',function(){open(i)})});
   dim.addEventListener('click',close);
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
