@@ -19,16 +19,22 @@ def prep_frame(src, W, H):
     """Кадр под обложку: кроп по центру, лёгкий зелёный тон и затемнение, чтобы текст читался."""
     im = Image.open(src).convert('RGB')
     im = ImageOps.exif_transpose(im)
-    im = ImageOps.fit(im, (W, H), Image.LANCZOS, centering=(0.5, 0.45))
+    ratio = im.width / im.height
+    if ratio > (W / H) * 1.15:   # кадр заметно шире, чем холст: заполняем фон размытой копией, сам кадр целиком
+        bg = ImageOps.fit(im, (W, H), Image.LANCZOS).filter(ImageFilter.GaussianBlur(40))
+        fg = im.resize((W, int(W / ratio)), Image.LANCZOS)
+        y = int(H * 0.42 - fg.height / 2); bg.paste(fg, (0, max(0, y))); im = bg
+    else:
+        im = ImageOps.fit(im, (W, H), Image.LANCZOS, centering=(0.5, 0.3))
     im = ImageEnhance.Color(im).enhance(0.75)            # чуть приглушить цвет
     tint = Image.new('RGB', (W, H), (11, 45, 38))
-    im = Image.blend(im, tint, 0.28)                     # фирменный тон
+    im = Image.blend(im, tint, 0.22)                     # фирменный тон
     out = os.path.join(HERE, '_frame.jpg'); im.save(out, quality=94); return out
 
 CSS = '''@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&family=Golos+Text:wght@400;500&display=swap');
 body{margin:0;width:%dpx;height:%dpx;overflow:hidden;position:relative;background:#0B2D26;color:#F3EFE6;font-family:Montserrat,sans-serif}
 .ph{position:absolute;inset:0;background:url(_frame.jpg) center/cover}
-.ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,45,38,.9) 0%%,rgba(11,45,38,.45) 30%%,rgba(11,45,38,0) 50%%,rgba(11,45,38,.2) 72%%,rgba(11,45,38,.88) 100%%)}
+.ov{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,45,38,.94) 0%%,rgba(11,45,38,.7) 22%%,rgba(11,45,38,.05) 42%%,rgba(11,45,38,0) 60%%,rgba(11,45,38,.35) 78%%,rgba(11,45,38,.92) 100%%)}
 .head{position:absolute;left:64px;right:64px;top:%dpx;text-align:center}
 .h1{font:800 %dpx/0.98 Montserrat;letter-spacing:-.02em;text-transform:uppercase;color:#F3EFE6;text-shadow:0 6px 30px rgba(0,0,0,.45)}
 .h1 em{font-style:normal;color:#E8CC8C}
