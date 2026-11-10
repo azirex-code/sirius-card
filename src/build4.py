@@ -196,7 +196,7 @@ body.open .sheet{{transform:none}}
     <svg class="mark" viewBox="{VB}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sirius">{ICON}</svg>
     <svg class="word" viewBox="{WVB}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SIRIUS">{WORD}</svg>
     <div class="sub">EVENT SYSTEMS</div>
-    <p class="tag">Технический партнёр мероприятий</p>
+    <p class="tag">Ваш технический партнёр мероприятий</p>
     <p class="geo">Ташкент — Узбекистан</p>
   </header>
   <section class="grid" aria-label="Услуги">
