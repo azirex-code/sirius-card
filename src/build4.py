@@ -138,7 +138,7 @@ html = f'''<!DOCTYPE html>
   /* Композиция D: логотип в золотой звуковой волне, услуги открытой сеткой без плиток, золотая кнопка внизу */
   --bg:#0B2D26;--ink:#F3EFE6;--muted:rgba(243,239,230,.62);
   --gold:#CC9F52;--gold-hi:#E8CC8C;
-  --glass:rgba(243,239,230,.06);--glass-line:rgba(243,239,230,.14);
+  --glass:rgba(16,131,110,.17);--glass-line:rgba(58,158,136,.34);
   --fd:"Montserrat",-apple-system,"SF Pro Display","Segoe UI",sans-serif;
   --fb:"Golos Text",-apple-system,"SF Pro Text","Segoe UI",sans-serif;
   color-scheme:dark;
@@ -158,9 +158,9 @@ a{{color:inherit;text-decoration:none}}
 .hero .tag:before,.hero .tag:after{{content:"";flex:1;height:1px;background:rgba(204,159,82,.55)}}
 .grid{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:auto 0;padding:0}}
 .g{{appearance:none;-webkit-appearance:none;background:none;border:0;color:inherit;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;min-width:0;padding:4px 2px 2px;border-radius:14px}}
-.g:active svg{{background:rgba(204,159,82,.18)}}
+.g:active svg{{background:rgba(16,131,110,.4)}}
 .g:focus-visible{{outline:2px solid var(--gold-hi);outline-offset:-2px}}
-.g svg{{box-sizing:border-box;width:54px;height:54px;padding:15px;border-radius:50%;border:1px solid rgba(204,159,82,.36);background:rgba(243,239,230,.045);color:var(--gold);transition:background .15s}}
+.g svg{{box-sizing:border-box;width:54px;height:54px;padding:15px;border-radius:50%;border:1px solid var(--glass-line);background:var(--glass);color:var(--gold);transition:background .15s}}
 .g b{{font:600 12.5px/1.25 var(--fd);min-height:32px;display:flex;align-items:flex-start;justify-content:center;letter-spacing:-.01em;hyphens:manual}}
 .g small{{font:600 11px "Rajdhani",var(--fd);letter-spacing:.06em;text-transform:uppercase;color:var(--gold);white-space:nowrap}}
 .g small.cyr{{font-family:"Play",var(--fd);font-size:10px;font-weight:700}}
