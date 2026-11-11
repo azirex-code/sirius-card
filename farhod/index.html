@@ -51,14 +51,12 @@ a{color:inherit;text-decoration:none}
 .hero .geo{margin:0;position:absolute;left:0;right:0;top:203px;text-align:center;font:600 10px/1.3 "Rajdhani",var(--fd);letter-spacing:.13em;text-indent:.13em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 .hero .tag{margin:0;position:absolute;left:0;right:0;top:178px;display:flex;align-items:center;gap:12px;font:500 13.5px/1.2 var(--fb);color:rgba(243,239,230,.9);letter-spacing:0;white-space:nowrap}
 .hero .tag:before,.hero .tag:after{content:"";flex:1;height:1px;background:rgba(204,159,82,.55)}
-.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:auto 0;padding:0;--line:rgba(243,239,230,.12)}
-.g:nth-child(3n+2),.g:nth-child(3n+3){border-left:1px solid var(--line)}
-.g:nth-child(n+4){border-top:1px solid var(--line)}
-.g{appearance:none;-webkit-appearance:none;background:none;border:0;color:inherit;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;min-width:0;padding:6px 4px 4px;transition:background .15s}
-.g:active{background:rgba(243,239,230,.06)}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:auto 0;padding:0}
+.g{appearance:none;-webkit-appearance:none;background:none;border:0;color:inherit;font:inherit;cursor:pointer;display:flex;flex-direction:column;align-items:center;text-align:center;gap:7px;min-width:0;padding:4px 2px 2px;border-radius:14px}
+.g:active svg{background:rgba(204,159,82,.18)}
 .g:focus-visible{outline:2px solid var(--gold-hi);outline-offset:-2px}
-.g svg{width:38px;height:38px;color:var(--gold)}
-.g b{font:600 14px/1.2 var(--fd);min-height:34px;display:flex;align-items:flex-start;justify-content:center;letter-spacing:-.01em;hyphens:manual}
+.g svg{box-sizing:border-box;width:54px;height:54px;padding:15px;border-radius:50%;border:1px solid rgba(204,159,82,.36);background:rgba(243,239,230,.045);color:var(--gold);transition:background .15s}
+.g b{font:600 12.5px/1.25 var(--fd);min-height:32px;display:flex;align-items:flex-start;justify-content:center;letter-spacing:-.01em;hyphens:manual}
 .g small{font:600 11px "Rajdhani",var(--fd);letter-spacing:.06em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 .g small.cyr{font-family:"Play",var(--fd);font-size:10px;font-weight:700}
 .dock{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding-top:7px}
@@ -80,9 +78,9 @@ body.open .dim{pointer-events:auto}
 body.open .sheet{transform:none}
 @media (prefers-reduced-motion:reduce){.dim,.sheet{transition:none}}
 @media (prefers-reduced-motion:reduce){.btn{transition:none}}
-@media (max-height:720px){.hero{height:196px}.hero .mark{top:20px;width:67px}.hero .word{top:96px;width:125px}.hero .sub{top:126px}.hero .tag{top:152px;font-size:12.5px}.hero .geo{top:173px;font-size:9px}.g{padding:5px 4px 3px}.g svg{width:32px;height:32px}.g b{font-size:13px;min-height:31px}.g small{font-size:10px}.g small.cyr{font-size:9px}.dock{padding-top:8px}}
-@media (min-height:800px){.hero{height:256px}.hero .mark{top:44px;width:83px}.hero .word{top:138px;width:147px}.hero .sub{top:172px}.hero .tag{top:204px;font-size:14.5px}.hero .geo{top:227px}.g{padding:14px 4px 12px}.g svg{width:44px;height:44px}.g b{font-size:14.5px;min-height:36px}.g small{font-size:11.5px}.g small.cyr{font-size:10.5px}.dock{padding-top:14px}}
-@media (min-width:420px) and (min-height:800px){.g{padding:9px 4px 7px}.g svg{width:46px;height:46px}.g b{font-size:15px;min-height:36px}.g small{font-size:12px}.g small.cyr{font-size:11px}.hero .tag{font-size:15px}.hero .geo{font-size:11px}}
+@media (max-height:720px){.hero{height:196px}.hero .mark{top:20px;width:67px}.hero .word{top:96px;width:125px}.hero .sub{top:126px}.hero .tag{top:152px;font-size:12.5px}.hero .geo{top:173px;font-size:9px}.g{padding:4px 2px 2px;gap:6px}.g svg{width:48px;height:48px;padding:13px}.g b{font-size:12px;min-height:30px}.g small{font-size:10px}.g small.cyr{font-size:9px}.dock{padding-top:8px}}
+@media (min-height:800px){.hero{height:256px}.hero .mark{top:44px;width:83px}.hero .word{top:138px;width:147px}.hero .sub{top:172px}.hero .tag{top:204px;font-size:14.5px}.hero .geo{top:227px}.g{padding:8px 2px 6px;gap:8px}.g svg{width:64px;height:64px;padding:18px}.g b{font-size:13px;min-height:33px}.g small{font-size:11.5px}.g small.cyr{font-size:10.5px}.dock{padding-top:14px}}
+@media (min-width:420px) and (min-height:800px){.g{padding:10px 2px 8px}.g svg{width:68px;height:68px;padding:19px}.g b{font-size:13.5px;min-height:34px}.g small{font-size:12px}.g small.cyr{font-size:11px}.hero .tag{font-size:15px}.hero .geo{font-size:11px}}
 </style>
 </head>
 <body>
